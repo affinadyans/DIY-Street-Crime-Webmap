@@ -22,20 +22,21 @@
     </style>
 </head>
 
+
+
 <body class="text-gray-600 leading-7 w-screen overlay-x-hidden">
 
-    <header class="absolute w-full top-0 z-50 shadow">
-        <div class="flex items-center p-4 absolute text-white bg-black/70 w-full">
-            <!-- Logo -->
+    <header id="main-header" class="w-full z-50 fixed">
+        <div class="flex items-center p-4 text-white bg-gray-900 w-full">
             <a href="/">
-                <img src="images/logo.png" alt="Logo" class="h-10 w-auto mr-3">
+                <img src="images/logo.png" alt="Logo" class="h-8 w-auto mr-3">
             </a>
-            <!-- Title -->
-            <div>
+            <div class="text-sm">
                 Universitas Gadjah Mada
             </div>
         </div>
     </header>
+
     <!-- Landing Section -->
     <section class="relative h-screen w-screen text-white">
         <img src="images/landing.png" class="absolute top-0 left-0 w-screen h-screen object-fill z-0"
@@ -177,27 +178,13 @@
                         </div>
                         <div>
                             <div class="text-black mb-2 font-semibold">Aggregate Time Series</div>
-                            <div>Non quo aperiam repellendus quas est est. Eos aut dolore aut ut sit nesciunt.</div>
-                            <div class="text-black mt-4 leading-0">
-                                <button class="modal-button text-sky-600 font-bold text-sm"
-                                    data-modal-id="modal-1">Learn more <span aria-hidden="true">→</span></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fixed flex inset-0 hidden items-center justify-center bg-black bg-opacity-50 z-50"
-                        id="modal-1">
-                        <div class="bg-white rounded shadow p-6 max-w-lg w-full">
-                            <h2 class="text-lg font-bold mb-4">Aggregate Time Series</h2>
-                            <p>
-                                Menyajikan informasi terkait kejadian kejahatan jalanan berdasarkan kelompok waktu
+                            <div> Menyajikan informasi terkait kejadian kejahatan jalanan berdasarkan kelompok waktu
                                 selama 24 jam
                                 dengan interval waktu setiap satu (1) jam. Pada peta diperlihatkan animasi heatmap yang
                                 menunjukkan kelompok kejadian pada interval waktu yang sama. Pengguna dapat memilih
                                 interval waktu yang
-                                diinginkan untuk eksplorasi data.
-                            </p>
-                            <button
-                                class="close-modal mt-4 px-4 py-2 bg-red-600 text-white rounded float-right">Close</button>
+                                diinginkan untuk eksplorasi data.</div>
+
                         </div>
                     </div>
                 </div>
@@ -212,19 +199,8 @@
                         </div>
                         <div>
                             <div class="text-black mb-2 font-semibold">Clustering Time Series</div>
-                            <div>Non quo aperiam repellendus quas est est. Eos aut dolore aut ut sit nesciunt.</div>
-                            <div class="text-black mt-4 leading-0">
-                                <button class="modal-button text-sky-600 font-bold text-sm"
-                                    data-modal-id="modal-2">Learn more <span aria-hidden="true">→</span></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fixed flex inset-0 hidden items-center justify-center bg-black bg-opacity-50 z-50"
-                        id="modal-2">
-                        <div class="bg-white rounded shadow p-6 max-w-lg w-full">
-                            <h2 class="text-lg font-bold mb-4">Clustering Time Series</h2>
-                            <p>
-                                Menyajikan informasi terkait pola kejadian kejahatan jalanan berdasarkan interval waktu
+                            <div> Menyajikan informasi terkait pola kejadian kejahatan jalanan berdasarkan interval
+                                waktu
                                 kejadian
                                 dan
                                 lokasi (kapanewon) di mana tindak kejahatan terjadi. Pada peta diperlihatkan tampilan
@@ -235,12 +211,10 @@
                                 informasi
                                 dengan mengklik pada wilayah kejadian dan dapat melakukan filter sesuai dengan kategori
                                 persentase
-                                klaster kejadian.
-                            </p>
-                            <button
-                                class="close-modal mt-4 px-4 py-2 bg-red-600 text-white rounded float-right">Close</button>
+                                klaster kejadian.</div>
                         </div>
                     </div>
+
                 </div>
                 <div class="p-8 bg-white rounded-xl shadow-lg relative">
                     <div>
@@ -253,19 +227,7 @@
                         </div>
                         <div>
                             <div class="text-black mb-2 font-semibold">Network OD Movement</div>
-                            <div>Non quo aperiam repellendus quas est est. Eos aut dolore aut ut sit nesciunt.</div>
-                            <div class="text-black mt-4 leading-0">
-                                <button class="modal-button text-sky-600 font-bold text-sm"
-                                    data-modal-id="modal-3">Learn more <span aria-hidden="true">→</span></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fixed flex inset-0 hidden items-center justify-center bg-black bg-opacity-50 z-50"
-                        id="modal-3">
-                        <div class="bg-white rounded shadow p-6 max-w-lg w-full">
-                            <h2 class="text-lg font-bold mb-4">Network OD Movement</h2>
-                            <p>
-                                Menyajikan informasi berupa pergerakan kejahatan jalanan berdasarkan rentetan waktu
+                            <div> Menyajikan informasi berupa pergerakan kejahatan jalanan berdasarkan rentetan waktu
                                 kejadian
                                 dalam
                                 interval waktu selama satu (1) bulan. Pada peta diperlihatkan bagaimana peristiwa
@@ -278,10 +240,7 @@
                                 Selain
                                 itu, pengguna juga dapat melakukan filter terhadap pemilihan origin dan destination,
                                 serta arah
-                                (west, north, south, east dll) ke mana pergerakan terjadi.
-                            </p>
-                            <button
-                                class="close-modal mt-4 px-4 py-2 bg-red-600 text-white rounded float-right">Close</button>
+                                (west, north, south, east dll) ke mana pergerakan terjadi.</div>
                         </div>
                     </div>
                 </div>
@@ -296,19 +255,7 @@
                         </div>
                         <div>
                             <div class="text-black mb-2 font-semibold">Korelasi & Regresi Sosiodemografi</div>
-                            <div>Non quo aperiam repellendus quas est est. Eos aut dolore aut ut sit nesciunt.</div>
-                            <div class="text-black mt-4 leading-0">
-                                <button class="modal-button text-sky-600 font-bold text-sm"
-                                    data-modal-id="modal-4">Learn more <span aria-hidden="true">→</span></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fixed flex inset-0 hidden items-center justify-center bg-black bg-opacity-50 z-50"
-                        id="modal-4">
-                        <div class="bg-white rounded shadow p-6 max-w-lg w-full">
-                            <h2 class="text-lg font-bold mb-4">Korelasi & Regresi Sosiodemografi</h2>
-                            <p>
-                                Menyajikan informasi terkait hubungan variabel-variabel sosiodemografi dengan jumlah
+                            <div> Menyajikan informasi terkait hubungan variabel-variabel sosiodemografi dengan jumlah
                                 kejadian
                                 kejahatan jalanan pada suatu wilayah kapanewon/kemantren. Hasil korelasi menjadi dasar
                                 pemilihan
@@ -321,12 +268,11 @@
                                 penduduk
                                 dengan
                                 tingkat pendidikan tinggi, jarak kapanewon/kemantren dengan pusat kabupaten/kota, jarak
-                                kapanewon/kemantren dengan pusat provinsi, dan luas wilayah.
-                            </p>
-                            <button
-                                class="close-modal mt-4 px-4 py-2 bg-red-600 text-white rounded float-right">Close</button>
+                                kapanewon/kemantren dengan pusat provinsi, dan luas wilayah.</div>
+
                         </div>
                     </div>
+
                 </div>
                 <div class="p-8 bg-white rounded-xl shadow-lg relative">
                     <div>
@@ -339,19 +285,7 @@
                         </div>
                         <div>
                             <div class="text-black mb-2 font-semibold">Autokorelasi & Regresi Spasial</div>
-                            <div>Non quo aperiam repellendus quas est est. Eos aut dolore aut ut sit nesciunt.</div>
-                            <div class="text-black mt-4 leading-0">
-                                <button class="modal-button text-sky-600 font-bold text-sm"
-                                    data-modal-id="modal-5">Learn more <span aria-hidden="true">→</span></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fixed flex inset-0 hidden items-center justify-center bg-black bg-opacity-50 z-50"
-                        id="modal-5">
-                        <div class="bg-white rounded shadow p-6 max-w-lg w-full">
-                            <h2 class="text-lg font-bold mb-4">Autokorelasi & Regresi Spasial</h2>
-                            <p>
-                                Menyajikan informasi terkait hubungan variabel-variabel sosiodemografi dengan jumlah
+                            <div> Menyajikan informasi terkait hubungan variabel-variabel sosiodemografi dengan jumlah
                                 kejadian
                                 kejahatan jalanan pada suatu wilayah kapanewon/kemantren. Hasil korelasi menjadi dasar
                                 pemilihan
@@ -364,12 +298,11 @@
                                 penduduk
                                 dengan
                                 tingkat pendidikan tinggi, jarak kapanewon/kemantren dengan pusat kabupaten/kota, jarak
-                                kapanewon/kemantren dengan pusat provinsi, dan luas wilayah.
-                            </p>
-                            <button
-                                class="close-modal mt-4 px-4 py-2 bg-red-600 text-white rounded float-right">Close</button>
+                                kapanewon/kemantren dengan pusat provinsi, dan luas wilayah.</div>
+
                         </div>
                     </div>
+
                 </div>
                 <div class="p-8 bg-white rounded-xl shadow-lg relative">
                     <div>
@@ -382,24 +315,11 @@
                         </div>
                         <div>
                             <div class="text-black mb-2 font-semibold">Fitur pada Webmap</div>
-                            <div>Non quo aperiam repellendus quas est est. Eos aut dolore aut ut sit nesciunt.</div>
-                            <div class="text-black mt-4 leading-0">
-                                <button class="modal-button text-sky-600 font-bold text-sm"
-                                    data-modal-id="modal-6">Learn more <span aria-hidden="true">→</span></button>
-                            </div>
+                            <div> Lain lain</div>
+
                         </div>
                     </div>
-                    <div class="modal fixed flex inset-0 hidden items-center justify-center bg-black bg-opacity-50 z-50"
-                        id="modal-6">
-                        <div class="bg-white rounded shadow p-6 max-w-lg w-full">
-                            <h2 class="text-lg font-bold mb-4">Fitur pada Webmap</h2>
-                            <p>
-                                Lain lain
-                            </p>
-                            <button
-                                class="close-modal mt-4 px-4 py-2 bg-red-600 text-white rounded float-right">Close</button>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -416,9 +336,28 @@
                     Anda dapat mengakses laman visualisasi peta hasil analisis melalui tombol di bawah
                 </div>
             </div>
-            <a href="map" class="bg-sky-600 hover:bg-sky-700 text-white font-medium px-6 py-2 rounded-full no-underline">
-            Akses Peta
-        </a>
+            <a href="map"
+                class="bg-sky-600 hover:bg-sky-700 text-white font-medium px-6 py-2 rounded-full no-underline">
+                Akses Peta
+            </a>
+        </div>
+    </section>
+
+    <!--  Uji Usabilitas -->
+    <section class="flex flex-col gap-8 p-8 px-16 text-center items-center  bg-gray-100">
+        <div class="mx-auto w-full max-w-7xl py-36">
+            <div class="mb-24">
+                <div class="text-5xl font-bold text-center mb-8 text-black">
+                    Uji Usabilitas
+                </div>
+                <div class="text-center max-w-5xl mx-auto text-lg leading-8">
+                    Anda dapat melakukan uji usabilitas peta hasil analisis melalui tombol di bawah
+                </div>
+            </div>
+            <a href="https://forms.gle/kgACa5Aoo1DP4hyX7" target="_blank" rel="noopener noreferrer"
+                class="bg-sky-600 hover:bg-sky-700 text-white font-medium px-6 py-2 rounded-full no-underline">
+                Uji Usabilitas
+            </a>
         </div>
     </section>
 
@@ -478,5 +417,6 @@
     </script>
 
 </body>
+
 
 </html>

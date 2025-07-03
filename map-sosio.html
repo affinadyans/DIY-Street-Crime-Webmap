@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Korelasi & Regresi Data Sosiodemografi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white flex flex-col">
+
+    <!-- Header -->
+
+    <div class="flex items-center p-4 text-white justify-between bg-gray-900 w-full z-40 relative">
+        <div class="flex items-center">
+            <a href="/">
+                <img src="images/logo.png" alt="Logo" class="h-8 w-auto mr-3">
+            </a>
+            <div class="text-sm">
+                Universitas Gadjah Mada
+            </div>
+
+        </div>
+        <div class="font-semibold text-sm">
+            Korelasi & Regresi Data Sosiodemografi
+        </div>
+
+        <div class="flex gap-2 font-semibold">
+            <a href="map">
+                <button class="bg-gray-500 hover:bg-gray-700 text-white text-xs py-1 px-3 rounded">
+                    Pola Spasial
+                </button>
+            </a>
+            <a href="map-apj-cctv">
+                <button class="bg-gray-500 hover:bg-gray-700 text-white text-xs py-1 px-3 rounded">
+                    APJ serta CCTV
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="w-screen h-[calc(100vh_-_4rem)] relative">
+        <div class=" absolute right-6 top-16">
+            <button data-modal-id="modal"
+                class="modal-button bg-blue-50 hover:bg-blue-100 text-white text-xs p-2 rounded">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-4 text-blue-500" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 4h18a1 1 0 011 1v3H2V5a1 1 0 011-1zm0 5h6v5H3V9zm8 0h6v5h-6V9zm8 0h2v5h-2V9zM3 15h6v5H3v-5zm8 0h6v5h-6v-5zm8 0h2v5h-2v-5z" />
+                </svg>
+            </button>
+        </div>
+
+        <iframe src="https://radiata.app.carto.com/map/165aa6e0-4052-4ce6-95de-b95dd50c7f53"
+            class="w-full h-full border-0" allowfullscreen></iframe>
+    </div>
+
+
+    <div class="modal fixed flex inset-0 hidden items-center justify-center bg-black bg-opacity-50 z-50" id="modal">
+        <div class=" rounded shadow p-6 w-10/12 bg-black/80 space-y-6 rounded-md">
+            <div class="w-full text-center font-semibold">Hasil Analisis Korelasi Data Sosiodemografi</div>
+            <div class="text-xs bg-black overflow-x-auto">
+                <table id="correlationTable" class="table-auto w-full border border-gray-700 text-white">
+                    <!-- Dynamic content will be inserted by script -->
+                </table>
+            </div>
+            <button class="close-modal mt-4 px-4 py-2 bg-red-600 text-white rounded float-right">Close</button>
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
+    <script>
+
+        const modalButtons = document.querySelectorAll('.modal-button');
+        const modals = document.querySelectorAll('.modal');
+        const closeButtons = document.querySelectorAll('.close-modal');
+
+        modalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modalId = button.dataset.modalId;
+                const modal = document.getElementById(modalId);
+                modals.forEach(m => m.classList.add('hidden'));
+                modal.classList.remove('hidden');
+            });
+        });
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                modals.forEach(m => m.classList.add('hidden'));
+            });
+        });
+
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modals.forEach(m => m.classList.add('hidden'));
+            }
+        });
+
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            drawer.classList.toggle('-translate-x-full');
+        }
+
+
+
+
+        const labels = [
+            "Jumlah_KJ", "Prs_PendLk", "Prs_PendPr", "Prs_RmjLk", "Prs_Peng",
+            "Prs_TkSklh", "Prs_Dasar", "Prs_Meneng", "Prs_Tinggi", "Jrk_KabKot",
+            "Jrk_Prov", "Luas", "Kep_Pend", "Keterangan"
+        ];
+
+        const labelsY = [
+            "Prs_PendLk", "Prs_PendPr", "Prs_RmjLk", "Prs_Peng",
+            "Prs_TkSklh", "Prs_Dasar", "Prs_Meneng", "Prs_Tinggi", "Jrk_KabKot",
+            "Jrk_Prov", "Luas", "Kep_Pend"
+        ];
+
+
+        const data_matrix = [
+            [0.020482, 1, -0.303799, -0.046183, -0.089431, 0.340267, 0.305247, -0.010586, -0.512607, 0.316146, 0.130896, 0.313374, -0.635430, "Sangat Lemah"],
+            [0.041007, -0.303799, 1, 0.066538, 0.003818, -0.000398, 0.034013, -0.108520, 0.044096, -0.202909, -0.083655, -0.024842, 0.203250, "Sangat Lemah"],
+            [0.405766, -0.046183, 0.066538, 1, 0.079707, -0.338146, -0.762081, 0.466643, 0.631838, -0.548656, -0.489293, -0.653891, 0.461954, "Cukup"],
+            [-0.069661, -0.089431, 0.003818, 0.079707, 1, 0.168117, -0.102208, -0.047870, 0.022657, -0.150243, 0.163923, -0.060277, 0.096579, "Sangat Lemah"],
+            [-0.218561, 0.340267, -0.000398, -0.338146, 0.168117, 1, 0.457396, -0.755038, -0.566729, 0.426182, 0.000061, 0.526352, -0.386836, "Lemah"],
+            [-0.502672, 0.305247, 0.034013, -0.762081, -0.102208, 0.457396, 1, -0.550827, -0.881651, 0.607127, 0.415237, 0.820603, -0.572854, "Cukup"],
+            [0.090309, -0.010586, -0.108520, 0.466643, -0.047870, -0.755038, -0.550827, 1, 0.322936, -0.275843, 0.000027, -0.492405, 0.105268, "Sangat Lemah"],
+            [0.567866, -0.512607, 0.044096, 0.631838, 0.022657, -0.566729, -0.881651, 0.322936, 1, -0.674369, -0.403314, -0.794137, 0.736040, "Cukup"],
+            [-0.403337, 0.316146, -0.202909, -0.548656, -0.150243, 0.426182, 0.607127, -0.275843, -0.674369, 1, 0.403978, 0.611222, -0.631172, "Cukup"],
+            [-0.356508, 0.130896, -0.083655, -0.489293, 0.163923, 0.000061, 0.415237, 0.000027, -0.403314, 0.403978, 1, 0.443517, -0.405555, "Lemah"],
+            [-0.343613, 0.313374, -0.024842, -0.653891, -0.060277, 0.526352, 0.820603, -0.492405, -0.794137, 0.611222, 0.443517, 1, -0.682287, "Lemah"],
+            [0.209165, -0.635430, 0.203250, 0.461954, 0.096579, -0.386836, -0.572854, 0.105268, 0.736040, -0.631172, -0.405555, -0.682287, 1, "Lemah"]
+        ];
+
+        function getColor(value) {
+            if (typeof value === 'string') return 'bg-white text-black font-semibold';
+            if (value === 1) return 'bg-[#A50026] text-white'; // perfect correlation
+            if (value > 0.8) return 'bg-[#DF412F]';
+            if (value > 0.6) return 'bg-[#F26A41]';
+            if (value > 0.4) return 'bg-[#FCA75E] text-black';
+            if (value > 0.2) return 'bg-[#FDDE89] text-black';
+            if (value > 0) return 'bg-[#FEF8B3] text-black';
+            if (value > -0.2) return 'bg-[#EAF6A3] text-black';
+            if (value > -0.4) return 'bg-[#D5ED88] text-black';
+            if (value > -0.6) return 'bg-[#A4D869] text-black';
+            if (value > -0.8) return 'bg-[#84CA66] text-black';
+            return 'bg-[#0F8445] text-black';
+        }
+
+        function getValue(value) {
+            if (typeof value === 'string') return value;
+            return value.toFixed(2);
+        }
+
+        function renderTable() {
+            const table = document.getElementById('correlationTable');
+
+            // Header
+            let thead = '<thead class="sticky top-0 bg-gray-700"><tr><th class="border px-2 py-1">Var</th>';
+            for (let label of labels) {
+                thead += `<th class="border px-2 py-1">${label}</th>`;
+            }
+            thead += '</tr></thead>';
+
+            // Body
+            let tbody = '<tbody>';
+            for (let i = 0; i < labelsY.length; i++) {
+                tbody += `<tr class="hover:bg-gray-700"><td class="border px-2 py-1">${labelsY[i]}</td>`;
+                for (let j = 0; j < labels.length; j++) {
+                    const value = data_matrix[i][j];
+                    const cellClass = getColor(value);
+                    tbody += `<td class="border px-2 py-1 ${cellClass}">${getValue(value)}</td>`;
+                }
+                tbody += '</tr>';
+            }
+            tbody += '</tbody>';
+
+            table.innerHTML = thead + tbody;
+        }
+
+        renderTable();
+
+
+    </script>
+
+</body>
+
+</html>
