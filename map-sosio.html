@@ -8,9 +8,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <style>
+        @font-face {
+            font-family: 'Gama Serif';
+            src: url('Gama-Serif-Bold.otf') format('opentype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
         body {
-            font-family: Tahoma, sans-serif;
+            font-family: Inter, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
             margin: 0;
+        }
+
+
+        .gama-serif {
+            font-family: 'Gama Serif', serif;
         }
     </style>
 </head>
@@ -24,7 +36,7 @@
             <a href="/DIY-Street-Crime-Webmap">
                 <img src="images/logo.png" alt="Logo" class="h-8 w-auto mr-3">
             </a>
-            <div class="text-sm">
+            <div class="text-sm gama-serif">
                 Universitas Gadjah Mada
             </div>
 
